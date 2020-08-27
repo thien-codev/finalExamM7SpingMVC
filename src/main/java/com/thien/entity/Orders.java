@@ -11,20 +11,24 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
+@Table(name = "orders")
 public class Orders implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "orderId")
+    @Column(name = "order_id")
     private int id;
 
     @DateTimeFormat(pattern = "yyyy-mm-dd")
+    @Column(name = "order_date")
     private Date orderDate;
 
+    @Column(name = "customer_name")
     private String customerName;
 
     @OneToMany(mappedBy = "order", fetch = FetchType.EAGER, cascade = {CascadeType.ALL})

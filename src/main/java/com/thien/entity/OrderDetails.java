@@ -6,6 +6,7 @@
 package com.thien.entity;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,21 +14,26 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "orderdetails")
 public class OrderDetails implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "order_details_id")
     private int orderDetailsId;
+
+    @Column(name = "quantity")
     private int quantity;
 
     @OneToOne
-    @JoinColumn(name = "proId")
+    @JoinColumn(name = "pro_id")
     Products product;
 
     @ManyToOne
-    @JoinColumn(name = "orderId")
+    @JoinColumn(name = "order_id")
     Orders order;
 
     public OrderDetails() {
