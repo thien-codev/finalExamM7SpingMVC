@@ -3,6 +3,7 @@ package com.thien.controller;
 
 import com.thien.entity.Orders;
 import com.thien.service.OrderService;
+import com.thien.service.ProductService;
 import java.util.HashMap;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class OrderRestController {
     @Autowired
     OrderService orderService;
+    
+    @Autowired
+    ProductService productService;
     
     @GetMapping
     public Object showListOfOrder() {

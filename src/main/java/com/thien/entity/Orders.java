@@ -1,5 +1,6 @@
 package com.thien.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -31,6 +32,7 @@ public class Orders implements Serializable {
     @Column(name = "customer_name")
     private String customerName;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "order", fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
     List<OrderDetails> listOrderDetails;
 

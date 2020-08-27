@@ -5,6 +5,8 @@
  */
 package com.thien.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -36,6 +38,7 @@ public class Products implements Serializable {
     @Column(name = "unit_price")
     private double unitPrice;
 
+    @JsonBackReference
     @OneToOne(mappedBy = "product")
     OrderDetails orderDetails;
 
